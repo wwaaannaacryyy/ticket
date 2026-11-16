@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Мои билеты</title>
+  <title>Мои заказы</title>
 
+  <!-- PWA настройки для iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Билеты">
@@ -42,371 +43,337 @@
     }
 
     /* =========================================================
-       ЭКРАН 1: СПИСОК ПОЕЗДОК / МЕНЮ (4-й скриншот)
+       ЭКРАН 1: МОИ ЗАКАЗЫ / СПИСОК (Реф: photo_5465362647877363234_y.jpg)
        ========================================================= */
     #menu-screen {
       display: flex;
       flex-direction: column;
       flex: 1;
       background-color: #f7f8fa;
+      padding-bottom: 60px;
     }
 
-    .menu-header {
+    .orders-header {
       background: #ffffff;
-      padding: 14px 18px 12px 18px;
+      padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #f0f1f4;
+      position: sticky;
+      top: 0;
+      z-index: 5;
     }
 
-    .menu-header h1 {
-      font-size: 22px;
-      font-weight: 700;
+    .orders-header h1 {
+      font-size: 17px;
+      font-weight: 600;
       color: #111;
-      letter-spacing: -0.3px;
-    }
-
-    .menu-header-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
+      text-align: center;
+      flex: 1;
     }
 
     .btn-icon {
-      background: #f0f3f8;
+      background: none;
       border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #2b303b;
+      color: #111;
       cursor: pointer;
     }
 
-    /* Вкладки Активные / История */
-    .tabs-bar {
-      display: flex;
-      background: #ffffff;
-      padding: 6px 18px 12px 18px;
-      gap: 12px;
-      border-bottom: 1px solid #f0f1f4;
-    }
-
-    .tab-item {
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #7b828a;
-      cursor: pointer;
-      background: #f4f5f8;
-    }
-
-    .tab-item.active {
-      background: #0091ff;
-      color: #ffffff;
-    }
-
-    .feed-container {
-      padding: 14px 16px 80px 16px;
+    .orders-feed {
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
 
-    .section-title-sm {
-      font-size: 13px;
+    .date-label {
+      font-size: 13.5px;
       font-weight: 600;
-      color: #8c929c;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-left: 4px;
+      color: #7c828d;
+      margin-top: 4px;
       margin-bottom: -6px;
+      margin-left: 4px;
     }
 
-    /* Карточка активного билета */
-    .active-ticket-card {
-      background: linear-gradient(135deg, #0091ff 0%, #0077e6 100%);
-      border-radius: 22px;
-      padding: 18px;
-      color: #ffffff;
-      box-shadow: 0 8px 22px rgba(0, 145, 255, 0.28);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: transform 0.1s ease;
-    }
-
-    .active-ticket-card:active {
-      transform: scale(0.985);
-    }
-
-    .act-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .act-badge {
-      background: rgba(255, 255, 255, 0.22);
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
+    .status-group-title {
+      font-size: 13.5px;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      color: #7c828d;
+      margin-bottom: -6px;
+      margin-left: 4px;
     }
 
-    .act-badge-dot {
-      width: 7px;
-      height: 7px;
-      background: #4cd964;
-      border-radius: 50%;
-      animation: pulse 1.4s infinite;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    .act-main-info {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .act-icon-wrap {
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .act-title {
-      font-size: 19px;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-    }
-
-    .act-sub {
-      font-size: 13px;
-      opacity: 0.9;
-      margin-top: 2px;
-    }
-
-    .act-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
-      padding-top: 12px;
-    }
-
-    .act-timer-preview {
-      font-size: 17px;
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .act-btn-open {
-      font-size: 13px;
-      font-weight: 600;
-      background: #ffffff;
-      color: #0077e6;
-      padding: 7px 14px;
-      border-radius: 14px;
-    }
-
-    /* Элементы истории */
-    .history-card {
+    /* Карточка заказа в списке */
+    .order-card {
       background: #ffffff;
       border-radius: 20px;
       padding: 16px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 14px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .order-main-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       cursor: pointer;
     }
 
-    .history-card:active {
-      background: #f8f9fa;
-    }
-
-    .history-left {
+    .order-left-part {
       display: flex;
+      gap: 12px;
       align-items: center;
-      gap: 14px;
     }
 
-    .history-icon-box {
-      width: 44px;
-      height: 44px;
-      background: #f2f4f8;
-      border-radius: 14px;
+    .mini-ticket-icon {
+      width: 42px;
+      height: 48px;
+      background: #0091ff;
+      border-radius: 8px;
+      position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #3b424f;
+      box-shadow: 0 2px 6px rgba(0,145,255,0.3);
+      flex-shrink: 0;
+    }
+    .mini-ticket-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #ffffff;
+      opacity: 0.8;
+      border-top: 1px dashed #d0e7ff;
+    }
+    .mini-bus-ico {
+      width: 20px;
+      height: 20px;
+      color: #fff;
     }
 
-    .history-title {
-      font-size: 15.5px;
-      font-weight: 600;
-      color: #1a1a1a;
+    .order-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
     }
 
-    .history-sub {
-      font-size: 12.5px;
+    .order-subtitle {
+      font-size: 13px;
       color: #8c929c;
-      margin-top: 3px;
+      margin-top: 2px;
     }
 
-    .history-right {
+    .order-right-part {
       text-align: right;
     }
 
-    .history-price {
-      font-size: 15.5px;
+    .order-price {
+      font-size: 16px;
       font-weight: 700;
-      color: #1a1a1a;
+      color: #111;
     }
 
-    .history-status {
-      font-size: 12px;
-      color: #9aa0a8;
-      margin-top: 3px;
+    /* Блок с кнопками Билет / Помощь внутри заказа */
+    .order-actions-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: #f4f5f8;
+      padding: 8px;
+      border-radius: 16px;
     }
 
-    /* Нижняя панель навигации (как в iOS приложениях) */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      max-width: 430px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-top: 1px solid #e5e7eb;
+    .action-pill-btn {
+      background: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 10px;
       display: flex;
-      justify-content: space-around;
-      padding: 8px 0 calc(8px + env(safe-area-inset-bottom)) 0;
-      z-index: 10;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .action-pill-btn:active {
+      transform: scale(0.97);
     }
 
-    .nav-tab {
+
+    /* =========================================================
+       ЭКРАН 2: ДЕТАЛИ И КНОПКА БИЛЕТА (Реф: photo_5465362647877363235_y.jpg)
+       ========================================================= */
+    #ticket-details-screen {
+      display: none;
+      background: #f7f8fa;
+      min-height: 100vh;
+      flex-direction: column;
+      padding-bottom: 40px;
+    }
+
+    .top-blue-card-wrap {
+      background: linear-gradient(180deg, #d3ebff 0%, #ffffff 280px);
+      padding: 10px 16px 16px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-      font-size: 10.5px;
-      font-weight: 600;
-      color: #8e95a0;
-      cursor: pointer;
     }
 
-    .nav-tab.active {
-      color: #0091ff;
-    }
-
-    /* =========================================================
-       МОДАЛЬНОЕ ОКНО НАСТРОЙКИ БИЛЕТА
-       ========================================================= */
-    #setup-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      z-index: 100;
+    .ticket-icon-box {
+      width: 76px;
+      height: 76px;
+      background: #0091ff;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-end;
+      box-shadow: 0 8px 20px rgba(0,145,255,0.3);
+      margin-top: 12px;
+      margin-bottom: 14px;
     }
 
-    .modal-sheet {
-      background: #ffffff;
+    .ticket-main-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111;
+      text-align: center;
+    }
+
+    .ticket-main-date {
+      font-size: 13px;
+      color: #7c828d;
+      margin-top: 4px;
+      text-align: center;
+    }
+
+    .action-buttons-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       width: 100%;
-      max-width: 430px;
-      border-top-left-radius: 26px;
-      border-top-right-radius: 26px;
-      padding: 24px 20px calc(24px + env(safe-area-inset-bottom)) 20px;
+      max-width: 400px;
+      margin-top: 16px;
+    }
+
+    .big-action-btn {
+      background: #f0f2f6;
+      border: none;
+      border-radius: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      animation: slideUp 0.25s ease-out;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #111;
+      cursor: pointer;
+    }
+    .big-action-btn:active {
+      background: #e4e7ed;
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
+    /* Блок Детали на экране билета */
+    .details-container {
+      padding: 0 16px;
     }
 
-    .modal-header {
+    .section-heading {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111;
+      margin: 16px 0 10px 0;
+    }
+
+    .info-list {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 0 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f1f4;
+      gap: 14px;
+    }
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .info-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .info-label {
+      font-size: 12.5px;
+      color: #8c929c;
+    }
+
+    .info-value {
+      font-size: 15.5px;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .price-card {
+      margin: 14px 16px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 18px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-
-    .modal-header h3 {
-      font-size: 19px;
+    .price-label {
+      font-size: 16px;
       font-weight: 700;
+      color: #111;
+    }
+    .price-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #111;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #666;
-    }
-
-    .form-group input {
-      padding: 13px 15px;
-      border: 1.5px solid #e5e8ee;
-      border-radius: 12px;
-      font-size: 15.5px;
-      outline: none;
-      background: #fafbfc;
-    }
-
-    .form-group input:focus {
-      border-color: #0091ff;
-    }
-
-    .modal-save-btn {
-      padding: 15px;
-      background: #0091ff;
-      color: #ffffff;
-      border: none;
-      border-radius: 14px;
-      font-size: 16.5px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 6px;
-    }
 
     /* =========================================================
-       ЭКРАН 2: БИЛЕТ С ТАЙМЕРОМ (1-й, 2-й и 3-й скриншоты)
+       ЭКРАН 3: АКТИВНЫЙ БИЛЕТ С ТАЙМЕРОМ (Реф: photo_5465362647877363237_y.jpg)
        ========================================================= */
-    #ticket-screen {
+    #active-ticket-screen {
       display: none;
-      background: linear-gradient(180deg, #d3ebff 0%, #ffffff 360px);
+      background: linear-gradient(180deg, #cdeaff 0%, #ffffff 360px);
       min-height: 100vh;
       flex-direction: column;
       padding-bottom: 40px;
@@ -435,7 +402,6 @@
       margin-top: 1px;
     }
 
-    /* Билет с перфорацией и без ребристости */
     .ticket-wrapper {
       padding: 8px 16px 20px 16px;
     }
@@ -448,17 +414,16 @@
       background: #0091ff;
       border-top-left-radius: 26px;
       border-top-right-radius: 26px;
-      height: 125px;
+      height: 120px;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #ffffff;
       font-size: 23px;
       font-weight: 700;
-      letter-spacing: -0.2px;
     }
 
-    /* Фирменный вырез (перфорация) без пикселей */
+    /* Перфорация */
     .ticket-divider {
       position: relative;
       height: 24px;
@@ -484,7 +449,6 @@
       height: 2px;
       margin: 0 20px;
       background-image: linear-gradient(to right, #cfd3db 50%, rgba(255, 255, 255, 0) 0%);
-      background-position: bottom;
       background-size: 12px 2px;
       background-repeat: repeat-x;
     }
@@ -504,7 +468,6 @@
       font-weight: 700;
       color: #202020;
       margin-bottom: 16px;
-      letter-spacing: -0.3px;
     }
 
     .timer-display {
@@ -551,256 +514,231 @@
       color: #8c9199;
       font-weight: 500;
     }
-
-    /* Секции деталей */
-    .details-container {
-      padding: 4px 18px;
-    }
-
-    .section-heading {
-      font-size: 21px;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 12px;
-      letter-spacing: -0.3px;
-    }
-
-    .info-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      padding: 13px 0;
-      border-bottom: 1px solid #f0f0f2;
-      gap: 14px;
-    }
-
-    .info-icon {
-      width: 22px;
-      height: 22px;
-      margin-top: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1e1e1e;
-      flex-shrink: 0;
-    }
-
-    .info-texts {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .info-label {
-      font-size: 12.5px;
-      color: #8b929b;
-      font-weight: 400;
-    }
-
-    .info-value {
-      font-size: 15.5px;
-      color: #111;
-      font-weight: 600;
-      letter-spacing: -0.1px;
-    }
-
-    .price-card {
-      margin: 14px 18px;
-      background: #f7f7f7;
-      border-radius: 18px;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .price-label {
-      font-size: 16px;
-      font-weight: 700;
-      color: #111;
-    }
-
-    .price-val {
-      font-size: 20px;
-      font-weight: 800;
-      color: #111;
-    }
-
-    .action-group {
-      margin: 12px 18px;
-      background: #f7f7f7;
-      border-radius: 18px;
-      padding: 4px 16px;
-    }
-
-    .action-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 0;
-      font-size: 15px;
-      font-weight: 500;
-      color: #111;
-      cursor: pointer;
-    }
-
-    .action-row:first-child {
-      border-bottom: 1px solid #e9e9eb;
-    }
   </style>
 </head>
 <body>
 
 <div class="app-container">
-  
+
+  <!-- =========================================================
+       ЭКРАН 1: СПИСОК ЗАКАЗОВ (Главный)
+       ========================================================= -->
   <div id="menu-screen">
-    <div class="menu-header">
-      <h1>Поездки</h1>
-      <div class="menu-header-actions">
-        <button class="btn-icon" onclick="openSetupModal()" title="Настройки">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        </button>
-      </div>
+    <div class="orders-header">
+      <button class="btn-icon" style="visibility: hidden;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <h1>Мои заказы</h1>
+      <button class="btn-icon" onclick="openSettingsModal()" title="Настройки">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
     </div>
 
-    <div class="tabs-bar">
-      <div class="tab-item active">Все билеты</div>
-      <div class="tab-item">Активные</div>
-      <div class="tab-item">Архив</div>
-    </div>
+    <div class="orders-feed">
+      <div class="status-group-title">В процессе</div>
 
-    <div class="feed-container">
-      <div class="section-title-sm">Текущая поездка</div>
-
-      <div class="active-ticket-card" onclick="openTicketScreen()">
-        <div class="act-top">
-          <div class="act-badge">
-            <span class="act-badge-dot"></span>
-            Активен
+      <!-- Активный заказ (открывает информацию о билете) -->
+      <div class="order-card">
+        <div class="order-main-info" onclick="openTicketDetails()">
+          <div class="order-left-part">
+            <div class="mini-ticket-icon">
+              <svg class="mini-bus-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 17v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"/><rect x="4" y="6" width="16" height="11" rx="3"/><line x1="9" y1="2" x2="11" y2="6"/><line x1="15" y1="2" x2="13" y2="6"/><circle cx="8" cy="14" r="1.5" fill="#fff"/><circle cx="16" cy="14" r="1.5" fill="#fff"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="order-title" id="list-route-title">Троллейбус 8</div>
+              <div class="order-subtitle" id="list-date-sub">16 ноября 2026 г. в 14:21</div>
+            </div>
           </div>
-          <span style="font-size: 13px; opacity: 0.85;" id="menu-active-date">Сегодня</span>
-        </div>
-
-        <div class="act-main-info">
-          <div class="act-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 17v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"></path>
-              <rect x="4" y="6" width="16" height="11" rx="3"></rect>
-              <line x1="9" y1="2" x2="11" y2="6"></line>
-              <line x1="15" y1="2" x2="13" y2="6"></line>
-              <circle cx="8" cy="14" r="1.5" fill="#fff"></circle>
-              <circle cx="16" cy="14" r="1.5" fill="#fff"></circle>
-              <line x1="4" y1="10" x2="20" y2="10"></line>
-            </svg>
-          </div>
-          <div>
-            <div class="act-title" id="menu-route-title">Троллейбус 8</div>
-            <div class="act-sub" id="menu-board-title">Бортовой №2013 • 1 билет</div>
+          <div class="order-right-part">
+            <div class="order-price" id="list-price">46₽</div>
           </div>
         </div>
 
-        <div class="act-bottom">
-          <div class="act-timer-preview">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span id="menu-timer-val">59:59</span>
-          </div>
-          <div class="act-btn-open">Открыть билет</div>
+        <div class="order-actions-row">
+          <button class="action-pill-btn" onclick="openActiveTicketTimer()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+            Билет
+          </button>
+          <button class="action-pill-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            Помощь
+          </button>
         </div>
       </div>
 
-      <div class="section-title-sm" style="margin-top: 10px;">История поездок</div>
-
-      <div class="history-card" onclick="openTicketScreen()">
-        <div class="history-left">
-          <div class="history-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="11" rx="3"/><line x1="9" y1="2" x2="11" y2="6"/><line x1="15" y1="2" x2="13" y2="6"/><circle cx="8" cy="14" r="1.5"/><circle cx="16" cy="14" r="1.5"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
+      <div class="date-label">10 октября, суббота</div>
+      <div class="order-card" style="opacity: 0.85;">
+        <div class="order-main-info">
+          <div class="order-left-part">
+            <div class="mini-ticket-icon" style="background: #8e95a0;">
+              <svg class="mini-bus-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="14" rx="3"/><circle cx="8" cy="15" r="1.5"/><circle cx="16" cy="15" r="1.5"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="order-title">Автобус 5</div>
+              <div class="order-subtitle" style="color: #ff3b30;">Заказ отменён</div>
+            </div>
           </div>
-          <div>
-            <div class="history-title">Троллейбус 12</div>
-            <div class="history-sub" id="hist-date-1">Вчера, 18:42</div>
+          <div class="order-right-part">
+            <div class="order-price">23₽</div>
           </div>
-        </div>
-        <div class="history-right">
-          <div class="history-price">23₽</div>
-          <div class="history-status">Завершена</div>
         </div>
       </div>
 
-      <div class="history-card" onclick="openTicketScreen()">
-        <div class="history-left">
-          <div class="history-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="14" rx="3"/><circle cx="8" cy="15" r="1.5"/><circle cx="16" cy="15" r="1.5"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
+      <div class="date-label">25 августа, вторник</div>
+      <div class="order-card">
+        <div class="order-main-info">
+          <div class="order-left-part">
+            <div class="mini-ticket-icon">
+              <svg class="mini-bus-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="11" rx="3"/><line x1="9" y1="2" x2="11" y2="6"/><line x1="15" y1="2" x2="13" y2="6"/><circle cx="8" cy="14" r="1.5" fill="#fff"/><circle cx="16" cy="14" r="1.5" fill="#fff"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="order-title">Троллейбус 8</div>
+              <div class="order-subtitle">Поездка по билету завершена</div>
+            </div>
           </div>
-          <div>
-            <div class="history-title">Троллейбус 9</div>
-            <div class="history-sub">24 августа, 09:15</div>
+          <div class="order-right-part">
+            <div class="order-price">23₽</div>
           </div>
-        </div>
-        <div class="history-right">
-          <div class="history-price">23₽</div>
-          <div class="history-status">Завершена</div>
         </div>
       </div>
 
-      <div class="history-card" onclick="openTicketScreen()">
-        <div class="history-left">
-          <div class="history-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="11" rx="3"/><line x1="9" y1="2" x2="11" y2="6"/><line x1="15" y1="2" x2="13" y2="6"/><circle cx="8" cy="14" r="1.5"/><circle cx="16" cy="14" r="1.5"/><line x1="4" y1="10" x2="20" y2="10"/></svg>
-          </div>
-          <div>
-            <div class="history-title">Троллейбус 8</div>
-            <div class="history-sub">22 августа, 14:02</div>
-          </div>
-        </div>
-        <div class="history-right">
-          <div class="history-price">23₽</div>
-          <div class="history-status">Завершена</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="bottom-nav">
-      <div class="nav-tab">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <span>Главная</span>
-      </div>
-      <div class="nav-tab active">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span>Билеты</span>
-      </div>
-      <div class="nav-tab">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <span>Профиль</span>
-      </div>
     </div>
   </div>
 
 
-  <div id="ticket-screen">
+  <!-- =========================================================
+       ЭКРАН 2: ИНФОРМАЦИЯ О БИЛЕТЕ И ДЕТАЛИ (Реф: photo_5465362647877363235_y.jpg)
+       ========================================================= -->
+  <div id="ticket-details-screen">
+    <div class="top-blue-card-wrap">
+      <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+        <button class="btn-icon" onclick="goBackToOrders()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="header-title-group">
+          <div class="header-title">Мои билеты</div>
+          <div class="header-subtitle">Указано местное время</div>
+        </div>
+        <button class="btn-icon" style="visibility: hidden;"></button>
+      </div>
+
+      <div class="ticket-icon-box">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 17v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"></path>
+          <rect x="4" y="6" width="16" height="11" rx="3"></rect>
+          <line x1="9" y1="2" x2="11" y2="6"></line>
+          <line x1="15" y1="2" x2="13" y2="6"></line>
+          <circle cx="8" cy="14" r="1.5" fill="#fff"></circle>
+          <circle cx="16" cy="14" r="1.5" fill="#fff"></circle>
+          <line x1="4" y1="10" x2="20" y2="10"></line>
+        </svg>
+      </div>
+
+      <div class="ticket-main-title" id="det-route-title">Троллейбус 8</div>
+      <div class="ticket-main-date" id="det-header-date">16 ноября 2026г. в 14:21</div>
+
+      <div class="action-buttons-container">
+        <button class="big-action-btn" onclick="openActiveTicketTimer()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+          Билет
+        </button>
+        <button class="big-action-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          Помощь
+        </button>
+      </div>
+    </div>
+
+    <!-- Детали заказа -->
+    <div class="details-container">
+      <div class="section-heading">Детали</div>
+      <div class="info-list">
+        
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/></svg>
+          </div>
+          <div class="info-texts">
+            <span class="info-label">Количество билетов</span>
+            <span class="info-value">1</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+          </div>
+          <div class="info-texts">
+            <span class="info-label">Регистрационный номер</span>
+            <span class="info-value" id="det-reg">TP2007</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg>
+          </div>
+          <div class="info-texts">
+            <span class="info-label">Бортовой номер</span>
+            <span class="info-value" id="det-board">№2007</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <div class="info-texts">
+            <span class="info-label">Перевозчик</span>
+            <span class="info-value">Троллейбусное Депо №1</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="info-texts">
+            <span class="info-label">Серия и номер</span>
+            <span class="info-value" id="det-serial">83 544430</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-heading" style="padding: 0 16px;">Стоимость</div>
+    <div class="price-card">
+      <span class="price-label">Итого</span>
+      <span class="price-val" id="det-price">46₽</span>
+    </div>
+  </div>
+
+
+  <!-- =========================================================
+       ЭКРАН 3: АКТИВНЫЙ БИЛЕТ С ТАЙМЕРОМ (Реф: photo_5465362647877363237_y.jpg)
+       ========================================================= -->
+  <div id="active-ticket-screen">
     <div class="ticket-header-bar">
-      <button class="btn-icon" onclick="goBackToMenu()" style="background: none;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      <button class="btn-icon" onclick="openTicketDetails()" style="background: none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="header-title-group">
         <div class="header-title">Мои билеты</div>
         <div class="header-subtitle">Указано местное время</div>
       </div>
-      <button class="btn-icon" onclick="resetTimer()" style="background: none;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+      <button class="btn-icon" onclick="resetTimer()" style="background: none;" title="Сбросить таймер">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
       </button>
     </div>
 
     <div class="ticket-wrapper">
       <div class="ticket-card">
-        <div class="ticket-top" id="display-title">
+        <div class="ticket-top" id="active-screen-title">
           Троллейбус 8
         </div>
         
+        <!-- Перфорация -->
         <div class="ticket-divider">
           <div class="cutout-left"></div>
           <div class="dashed-line"></div>
@@ -829,33 +767,44 @@
       </div>
     </div>
 
-    <div class="details-container">
-      <div class="section-heading">Детали</div>
+    <!-- Детали внизу таймера (повторяют дизайн с референсов) -->
+    <div class="details-container" style="margin-top: 4px;">
+      <div class="section-heading" style="font-size: 18px;">Детали</div>
       <div class="info-list">
         
         <div class="info-item">
           <div class="info-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="info-texts">
+            <span class="info-label">Серия и номер</span>
+            <span class="info-value" id="timer-disp-serial">83 544430</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
           </div>
           <div class="info-texts">
             <span class="info-label">Регистрационный номер</span>
-            <span class="info-value" id="disp-reg">ТР2013</span>
+            <span class="info-value" id="timer-disp-reg">TP2007</span>
           </div>
         </div>
 
         <div class="info-item">
           <div class="info-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg>
           </div>
           <div class="info-texts">
             <span class="info-label">Бортовой номер</span>
-            <span class="info-value" id="disp-board">№2013</span>
+            <span class="info-value" id="timer-disp-board">№2007</span>
           </div>
         </div>
 
         <div class="info-item">
           <div class="info-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="2" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="22" y2="12"/></svg>
           </div>
           <div class="info-texts">
             <span class="info-label">Перевозчик</span>
@@ -865,17 +814,17 @@
 
         <div class="info-item">
           <div class="info-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="info-texts">
             <span class="info-label">Действует до</span>
-            <span class="info-value" id="disp-valid-until">--</span>
+            <span class="info-value" id="timer-disp-valid">--</span>
           </div>
         </div>
 
         <div class="info-item">
           <div class="info-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 10 12 5 17 10"/><polyline points="17 14 12 19 7 14"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 10 12 5 17 10"/><polyline points="17 14 12 19 7 14"/></svg>
           </div>
           <div class="info-texts">
             <span class="info-label">Направление</span>
@@ -885,7 +834,7 @@
 
         <div class="info-item">
           <div class="info-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="2"/><circle cx="8" cy="12" r="1"/><circle cx="16" cy="12" r="1"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/></svg>
           </div>
           <div class="info-texts">
             <span class="info-label">Количество билетов</span>
@@ -896,55 +845,47 @@
       </div>
     </div>
 
-    <div class="section-heading" style="padding: 16px 18px 0 18px;">Стоимость заказа</div>
+    <div class="section-heading" style="padding: 0 16px;">Стоимость заказа</div>
     <div class="price-card">
       <span class="price-label">Итого</span>
-      <span class="price-val" id="disp-price">23₽</span>
-    </div>
-
-    <div class="action-group">
-      <div class="action-row">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        <span>Получить чек</span>
-      </div>
-      <div class="action-row">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-        <span>Обратиться в поддержку</span>
-      </div>
+      <span class="price-val" id="timer-disp-price">46₽</span>
     </div>
   </div>
 
 
-  <div id="setup-modal">
-    <div class="modal-sheet">
-      <div class="modal-header">
-        <h3>Параметры билета</h3>
-        <button class="btn-icon" onclick="closeSetupModal()">
+  <!-- =========================================================
+       МОДАЛЬНОЕ ОКНО НАСТРОЕК (Маршрут, Бортовой, Серия, Цена)
+       ========================================================= -->
+  <div id="settings-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:100; justify-content:center; align-items:flex-end;">
+    <div style="background:#ffffff; width:100%; max-width:430px; border-top-left-radius:26px; border-top-right-radius:26px; padding:24px 20px calc(24px + env(safe-area-inset-bottom)) 20px; display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="font-size:19px; font-weight:700;">Настройки билета</h3>
+        <button class="btn-icon" onclick="closeSettingsModal()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <div class="form-group">
-        <label>Номер троллейбуса (маршрут)</label>
-        <input type="text" id="input-route" value="8" placeholder="8, 9, 12">
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:13px; font-weight:600; color:#666;">Номер маршрута</label>
+        <input type="text" id="inp-route" value="8" style="padding:13px 15px; border:1.5px solid #e5e8ee; border-radius:12px; font-size:15px; outline:none;">
       </div>
 
-      <div class="form-group">
-        <label>Бортовой и регистрационный номер</label>
-        <input type="text" id="input-num" value="2013" placeholder="2013">
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:13px; font-weight:600; color:#666;">Бортовой номер (и рег. префикс)</label>
+        <input type="text" id="inp-num" value="2007" style="padding:13px 15px; border:1.5px solid #e5e8ee; border-radius:12px; font-size:15px; outline:none;">
       </div>
 
-      <div class="form-group">
-        <label>Префикс гос. номера</label>
-        <input type="text" id="input-prefix" value="ТР" placeholder="ТР">
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:13px; font-weight:600; color:#666;">Серия и номер билета</label>
+        <input type="text" id="inp-serial" value="83 544430" style="padding:13px 15px; border:1.5px solid #e5e8ee; border-radius:12px; font-size:15px; outline:none;">
       </div>
 
-      <div class="form-group">
-        <label>Стоимость проезда</label>
-        <input type="text" id="input-price" value="23₽">
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <label style="font-size:13px; font-weight:600; color:#666;">Стоимость</label>
+        <input type="text" id="inp-price" value="46₽" style="padding:13px 15px; border:1.5px solid #e5e8ee; border-radius:12px; font-size:15px; outline:none;">
       </div>
 
-      <button class="modal-save-btn" onclick="saveAndApplySettings()">Сохранить и применить</button>
+      <button onclick="saveSettings()" style="padding:15px; background:#0091ff; color:#fff; border:none; border-radius:14px; font-size:16.5px; font-weight:600; cursor:pointer; margin-top:6px;">Сохранить</button>
     </div>
   </div>
 
@@ -963,39 +904,56 @@
     return num.toString().padStart(2, '0');
   }
 
-  // При первой загрузке инициализируем билет на 1 час вперед
   window.addEventListener('DOMContentLoaded', () => {
-    initTicketTime();
+    initAppData();
     startTimer();
   });
 
-  function initTicketTime() {
-    const route = document.getElementById('input-route').value || '8';
-    const num = document.getElementById('input-num').value || '2013';
-    const prefix = document.getElementById('input-prefix').value || 'ТР';
-    const price = document.getElementById('input-price').value || '23₽';
+  function initAppData() {
+    const route = document.getElementById('inp-route').value;
+    const num = document.getElementById('inp-num').value;
+    const serial = document.getElementById('inp-serial').value;
+    const price = document.getElementById('inp-price').value;
 
-    // Обновляем текст на экране меню
-    document.getElementById('menu-route-title').innerText = `Троллейбус ${route}`;
-    document.getElementById('menu-board-title').innerText = `Бортовой №${num} • 1 билет`;
+    // Тексты в списке
+    document.getElementById('list-route-title').innerText = `Троллейбус ${route}`;
+    document.getElementById('list-price').innerText = price;
 
-    // Обновляем текст в самом билете
-    document.getElementById('display-title').innerText = `Троллейбус ${route}`;
-    document.getElementById('disp-reg').innerText = `${prefix}${num}`;
-    document.getElementById('disp-board').innerText = `№${num}`;
-    document.getElementById('disp-price').innerText = price;
+    // Тексты в деталях билета
+    document.getElementById('det-route-title').innerText = `Троллейбус ${route}`;
+    document.getElementById('det-reg').innerText = `TP${num}`;
+    document.getElementById('det-board').innerText = `№${num}`;
+    document.getElementById('det-serial').innerText = serial;
+    document.getElementById('det-price').innerText = price;
 
+    // Тексты в таймере
+    document.getElementById('active-screen-title').innerText = `Троллейбус ${route}`;
+    document.getElementById('timer-disp-serial').innerText = serial;
+    document.getElementById('timer-disp-reg').innerText = `TP${num}`;
+    document.getElementById('timer-disp-board').innerText = `№${num}`;
+    document.getElementById('timer-disp-price').innerText = price;
+
+    // Дата и время (берем текущее время устройства)
     const now = new Date();
     const expiry = new Date(now.getTime() + 60 * 60 * 1000);
     targetTime = expiry.getTime();
 
-    const day = expiry.getDate();
-    const month = months[expiry.getMonth()];
-    const year = expiry.getFullYear();
-    const hours = pad(expiry.getHours());
-    const minutes = pad(expiry.getMinutes());
+    const day = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const hours = pad(now.getHours());
+    const minutes = pad(now.getMinutes());
 
-    document.getElementById('disp-valid-until').innerText = `${day} ${month} ${year}г. до ${hours}:${minutes}`;
+    const formattedDateTime = `${day} ${month} ${year}г. в ${hours}:${minutes}`;
+    document.getElementById('list-date-sub').innerText = formattedDateTime;
+    document.getElementById('det-header-date').innerText = formattedDateTime;
+
+    const expDay = expiry.getDate();
+    const expMonth = months[expiry.getMonth()];
+    const expYear = expiry.getFullYear();
+    const expHours = pad(expiry.getHours());
+    const expMins = pad(expiry.getMinutes());
+    document.getElementById('timer-disp-valid').innerText = `${expDay} ${expMonth} ${expYear}г. до ${expHours}:${expMins}`;
   }
 
   function startTimer() {
@@ -1007,7 +965,6 @@
       if (remaining <= 0) {
         clearInterval(timerInterval);
         document.getElementById('timer-status').innerText = 'Срок действия истёк';
-        document.getElementById('menu-timer-val').innerText = '00:00';
         renderDigits(0, 0, 0);
         return;
       }
@@ -1018,7 +975,6 @@
       const ms = Math.floor((remaining % 1000) / 10);
 
       renderDigits(mins, secs, ms);
-      document.getElementById('menu-timer-val').innerText = `${pad(mins)}:${pad(secs)}`;
     }, 35);
   }
 
@@ -1038,34 +994,44 @@
   function resetTimer() {
     targetTime = Date.now() + 60 * 60 * 1000;
     document.getElementById('timer-status').innerText = 'Срок действия билета';
-    initTicketTime();
     startTimer();
   }
 
-  /* Навигация между экранами */
-  function openTicketScreen() {
+  /* Навигация */
+  function openTicketDetails() {
     document.getElementById('menu-screen').style.display = 'none';
-    document.getElementById('ticket-screen').style.display = 'flex';
+    document.getElementById('active-ticket-screen').style.display = 'none';
+    document.getElementById('ticket-details-screen').style.display = 'flex';
     window.scrollTo(0, 0);
   }
 
-  function goBackToMenu() {
-    document.getElementById('ticket-screen').style.display = 'none';
+  function openActiveTicketTimer() {
+    document.getElementById('menu-screen').style.display = 'none';
+    document.getElementById('ticket-details-screen').style.display = 'none';
+    document.getElementById('active-ticket-screen').style.display = 'flex';
+    window.scrollTo(0, 0);
+    startTimer();
+  }
+
+  function goBackToOrders() {
+    document.getElementById('ticket-details-screen').style.display = 'none';
+    document.getElementById('active-ticket-screen').style.display = 'none';
     document.getElementById('menu-screen').style.display = 'flex';
     window.scrollTo(0, 0);
   }
 
-  /* Модальное окно */
-  function openSetupModal() {
-    document.getElementById('setup-modal').style.display = 'flex';
+  /* Модальное окно настроек */
+  function openSettingsModal() {
+    document.getElementById('settings-modal').style.display = 'flex';
   }
 
-  function closeSetupModal() {
-    document.getElementById('setup-modal').style.display = 'none';
+  function closeSettingsModal() {
+    document.getElementById('settings-modal').style.display = 'none';
   }
 
-  function saveAndApplySettings() {
-    closeSetupModal();
+  function saveSettings() {
+    closeSettingsModal();
+    initAppData();
     resetTimer();
   }
 </script>
