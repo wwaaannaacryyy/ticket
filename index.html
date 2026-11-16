@@ -65,7 +65,7 @@
 
     .orders-header h1 {
       font-size: 17px;
-      font-weight: 600;
+      font-weight: 500;
       color: #111;
       text-align: center;
       flex: 1;
@@ -92,7 +92,7 @@
 
     .date-label, .status-group-title {
       font-size: 13.5px;
-      font-weight: 600;
+      font-weight: 500;
       color: #7c828d;
       margin-top: 4px;
       margin-bottom: -6px;
@@ -154,7 +154,7 @@
 
     .order-title {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 500;
       color: #111;
     }
 
@@ -162,6 +162,7 @@
       font-size: 13px;
       color: #8c929c;
       margin-top: 2px;
+      font-weight: 400;
     }
 
     .order-right-part {
@@ -170,7 +171,7 @@
 
     .order-price {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 600;
       color: #111;
     }
 
@@ -193,7 +194,7 @@
       justify-content: center;
       gap: 8px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 500;
       color: #111;
       cursor: pointer;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
@@ -234,7 +235,7 @@
 
     .ticket-main-title {
       font-size: 22px;
-      font-weight: 700;
+      font-weight: 500;
       color: #111;
       text-align: center;
     }
@@ -244,6 +245,7 @@
       color: #7c828d;
       margin-top: 4px;
       text-align: center;
+      font-weight: 400;
     }
 
     .action-buttons-container {
@@ -265,7 +267,7 @@
       align-items: center;
       gap: 6px;
       font-size: 13.5px;
-      font-weight: 600;
+      font-weight: 500;
       color: #111;
       cursor: pointer;
     }
@@ -279,7 +281,7 @@
 
     .section-heading {
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 500;
       color: #111;
       margin: 16px 0 10px 0;
     }
@@ -308,7 +310,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #111;
+      color: #111; /* Черный цвет иконки */
       flex-shrink: 0;
       margin-top: 1px;
     }
@@ -322,12 +324,13 @@
     .info-label {
       font-size: 12.5px;
       color: #8c929c;
+      font-weight: 400;
     }
 
     .info-value {
       font-size: 15.5px;
       color: #111;
-      font-weight: 600;
+      font-weight: 500; /* Более тонкий шрифт */
     }
 
     .price-card {
@@ -342,16 +345,16 @@
     }
     .price-label {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 500;
       color: #111;
     }
     .price-val {
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 600;
       color: #111;
     }
 
-    /* ЭКРАН 3: ТАЙМЕР С СЛАЙДЕРОМ ШАПКИ */
+    /* ЭКРАН 3: ТАЙМЕР */
     #active-ticket-screen {
       display: none;
       background: linear-gradient(180deg, #cdeaff 0%, #ffffff 360px);
@@ -373,7 +376,7 @@
 
     .header-title {
       font-size: 17px;
-      font-weight: 600;
+      font-weight: 500;
       color: #111;
     }
 
@@ -381,6 +384,7 @@
       font-size: 12px;
       color: #7a828a;
       margin-top: 1px;
+      font-weight: 400;
     }
 
     .ticket-wrapper {
@@ -407,8 +411,8 @@
       justify-content: center;
       align-items: center;
       color: #ffffff;
-      font-size: 23px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 500; /* Тоньше */
     }
 
     .ticket-divider {
@@ -451,8 +455,8 @@
     }
 
     .timer-caption {
-      font-size: 19px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 500; /* Тоньше */
       color: #202020;
       margin-bottom: 16px;
     }
@@ -463,6 +467,7 @@
       gap: 4px;
     }
 
+    /* Тонкие, легкие цифры таймера */
     .digit-box {
       background: #ffffff;
       border-radius: 11px;
@@ -471,16 +476,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 30px;
+      font-weight: 400; /* Сделано тоньше */
       color: #111;
       font-variant-numeric: tabular-nums;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     .colon {
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 400;
       color: #111;
       margin: 0 2px;
       padding-bottom: 4px;
@@ -492,15 +497,18 @@
       justify-content: space-around;
       margin-top: 6px;
       font-size: 12px;
-      color: #555;
-      font-weight: 500;
+      color: #666;
+      font-weight: 400;
     }
 
+    /* Увеличенная длинная надпись без переносов */
     .controller-hint {
       margin-top: 34px;
       font-size: 14px;
       color: #8c9199;
-      font-weight: 500;
+      font-weight: 400;
+      white-space: nowrap; /* Запрет переноса строк */
+      letter-spacing: -0.1px;
     }
   </style>
 </head>
@@ -514,7 +522,7 @@
       <button class="btn-icon" style="visibility: hidden;"></button>
       <h1>Мои заказы</h1>
       <button class="btn-icon" onclick="openSettingsModal()" title="Настройки">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       </button>
     </div>
 
@@ -539,11 +547,11 @@
 
         <div class="order-actions-row">
           <button class="action-pill-btn" onclick="openActiveTicketTimer()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
             Билет
           </button>
           <button class="action-pill-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
             Помощь
           </button>
         </div>
@@ -601,11 +609,11 @@
 
       <div class="action-buttons-container">
         <button class="big-action-btn" onclick="openActiveTicketTimer()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="12" r="1.5"/></svg>
           Билет
         </button>
         <button class="big-action-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
           Помощь
         </button>
       </div>
@@ -644,7 +652,7 @@
     </div>
   </div>
 
-  <!-- ЭКРАН 3: ТАЙМЕР С СЛАЙДЕРОМ ШАПКИ -->
+  <!-- ЭКРАН 3: ТАЙМЕР -->
   <div id="active-ticket-screen">
     <div class="ticket-header-bar">
       <button class="btn-icon" onclick="openTicketDetails()" style="background: none;">
@@ -734,27 +742,27 @@
     </div>
   </div>
 
-  <!-- Модальное окно настроек (без поля серии и стоимости) -->
+  <!-- Модальное окно настроек -->
   <div id="settings-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:100; justify-content:center; align-items:flex-end;">
     <div style="background:#ffffff; width:100%; max-width:430px; border-top-left-radius:26px; border-top-right-radius:26px; padding:24px 20px calc(24px + env(safe-area-inset-bottom)) 20px; display:flex; flex-direction:column; gap:16px;">
       <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h3 style="font-size:19px; font-weight:700;">Параметры билета</h3>
+        <h3 style="font-size:19px; font-weight:500;">Параметры билета</h3>
         <button class="btn-icon" onclick="closeSettingsModal()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
       <div style="display:flex; flex-direction:column; gap:6px;">
-        <label style="font-size:13px; font-weight:600; color:#666;">Номер маршрута</label>
+        <label style="font-size:13px; font-weight:500; color:#666;">Номер маршрута</label>
         <input type="text" id="inp-route" value="8" style="padding:13px 15px; border:1.5px solid #e5e8ee; border-radius:12px; font-size:15px; outline:none;">
       </div>
 
       <div style="display:flex; flex-direction:column; gap:6px;">
-        <label style="font-size:13px; font-weight:600; color:#666;">Бортовой / Регистрационный номер</label>
+        <label style="font-size:13px; font-weight:500; color:#666;">Бортовой / Регистрационный номер</label>
         <input type="text" id="inp-num" value="2007" style="padding:13px 15px; border:1.5px solid #e5e8ee; border-radius:12px; font-size:15px; outline:none;">
       </div>
 
-      <button onclick="saveSettings()" style="padding:15px; background:#0091ff; color:#fff; border:none; border-radius:14px; font-size:16.5px; font-weight:600; cursor:pointer; margin-top:6px;">Применить и сгенерировать</button>
+      <button onclick="saveSettings()" style="padding:15px; background:#0091ff; color:#fff; border:none; border-radius:14px; font-size:16.5px; font-weight:500; cursor:pointer; margin-top:6px;">Применить и сгенерировать</button>
     </div>
   </div>
 
@@ -774,15 +782,10 @@
     return num.toString().padStart(2, '0');
   }
 
-  // Функция генерации серии и номера по заданным условиям
   function generateSerialAndNumber() {
-    // Первые две цифры: либо из диапазона 30-39, либо 80-89
     const prefixGroup = Math.random() < 0.5 ? 30 : 80;
     const firstTwo = prefixGroup + Math.floor(Math.random() * 10);
-
-    // Остальные 6 цифр через пробел (например, 544430)
     const remainingSix = Math.floor(100000 + Math.random() * 900000);
-
     return `${firstTwo} ${remainingSix}`;
   }
 
@@ -874,7 +877,6 @@
     startTimer();
   }
 
-  /* Свайп шапки */
   function initCardSwipe() {
     const card = document.getElementById('draggable-card');
     let startX = 0;
@@ -924,7 +926,6 @@
     });
   }
 
-  /* Навигация */
   function openTicketDetails() {
     document.getElementById('menu-screen').style.display = 'none';
     document.getElementById('active-ticket-screen').style.display = 'none';
